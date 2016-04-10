@@ -21,10 +21,26 @@ var current_user_info = {
 					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
-					      role: [ "admin", "representative", "trainer", "patient_manager" ]
+					      role: [ "admin", "representative","patient_manager" ]
+					      // ADD trainer AS ONE OF THE ROLES TO SEE THE DIFFERENCE BETWEEN THE 
+					      // FUNCTIONS THAT A DOCTOR OR TRAINER CAN DO WITH THE SYSTEM
 					    };
 
-var current_user_patient_chosen = "1234567";
+var current_user_patient_chosen = {
+									id: "1234567",
+									first_name: "patient_first",
+									last_name: "patient_last",
+									dob: "date_of_birth",
+									gender: "male",
+									email: "blah@uci.edu",
+									wattage: "100 Watts",
+									heart_rate: "150 beats per minute",
+									workload: "1hr",
+									game: "Minecraft",
+									prescription: "something here, something here, something here, and more stuff"
+								  };
+
+
 var userDatabase = [{id:"20671754", role:["admin", "doctor"]}, {id:"93867236", role:["trainer"]}];
 
 
@@ -160,6 +176,9 @@ $(function() {
 	            if ($.inArray('trainer', current_user_info.role) == -1){
                     // Will need to add admin to the user roles or do nothing if already there
                 }
+                else {
+                	alert("Sorry only the Doctor can turn the administrator privaleges function on or off, but other changes were saved");
+                }
 		}
 		else if (admin_status_priv_off == true && admin_status_priv_on == false){
 			
@@ -167,14 +186,47 @@ $(function() {
 	            if ($.inArray('trainer', current_user_info.role) == -1){
                     // Will need to remove admin to the user roles or do nothing if already there
                 }
+                else {
+                	alert("Sorry only the Doctor can turn the administrator privaleges function on or off, but other changes were saved");                	
+                }
 		}
 
 	});
-
-
-
 });
 
+
+// Patient page edit prescription
+$(function(){
+
+	// clicked on the edit button on the prescription and treatement section
+	$("#edit_patient_treatement").click(function() {
+		if ($.inArray('trainer', current_user_info.role) == -1){
+			document.location.href='editPatientProfile.html';
+         }
+         else {
+         	alert("Sorry only the Doctor can edit the patient's prescription or treatement. Please contact patient's doctor.");
+         }
+	});
+
+
+	$('#edit-patient-profile-form').submit(function() {
+
+		var prescri = $('#edit-patient-profile-form').find('input[name="presc"]').val();
+		var treate = $('#edit-patient-profile-form').find('input[name="treat"]').val();
+
+		if (prescri != ""){
+			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			alert("prescription");
+		}
+		if (treate != ""){
+			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			alert("treatment");
+		}
+
+
+	});
+
+});
 
 // HAVE TO MAKE IT SO THAT I CAN LOAD THE CORRECT PATIENT WHEN CLICKED AND SO THAT ON THE USER
 // LIST LOAD THE CORRECT USER WHEN CLICKED 
