@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>iXercise</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="functions.js"></script>
+</head<body>
+ 
+ <!--This is setting up the login screen -->
+ 	<div class = "container">
+ 		<div class="col-sm-6 col-sm-offset-3">
+ 			<h1> iXercise Login </h1>
+ 			<hr>
+
+ 			<!-- LOGIN FORM -->
+ 			<form id="login-form" method="post">
+ 				<div class="form-group">
+ 					<label>ID</label>
+ 						<input type="text" class="form-control" name="id">
+ 				</div> <!-- id div end -->
+
+ 				<div class="form-group">
+ 					<label>Password</label>
+ 						<input type="text" class="form-control" name="password">
+ 				</div> <!-- password div end -->
+
+ 				<!-- The drop down menu for user picking their position -->
+        		<div class="btn-group">
+            		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Position <span class="caret"></span></button>
+            		<ul class="dropdown-menu">
+                		<li><a href="#">Doctor</a></li>
+                		<li><a href="#">Trainer</a></li>
+                		<li><a href="#">Administrator</a></li>
+            		</ul>
+        		</div><br></br> <!-- dropdown end -->
+
+ 				<button type="submit" class="btn btn-warning btn-lg">Login</button>
+
+ 			</form>
+
+ 			<hr>
+ 			<p> Need an account? <a href="signupScreen.html"> SignUp </a></p>
+
+ 		</div> <!-- col end -->
+ 	</div> <!-- container end -->
+
+</body>
+</html>
