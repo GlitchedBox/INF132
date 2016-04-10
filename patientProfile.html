@@ -19,17 +19,24 @@
     <script type="text/javascript" src="functions.js"></script>
 
     <script>
+
         $(document).ready(function(){
 
-            $("#patient_profile").html(current_user_patient_chosen);
-
+                $(".patient_id").html(current_user_patient_chosen.first_name + " " + current_user_patient_chosen.last_name);
+                $(".wattage").html(current_user_patient_chosen.wattage);
+                $(".heart_rate").html(current_user_patient_chosen.heart_rate);
+                $(".workload").html(current_user_patient_chosen.workload);
+                $(".game").html(current_user_patient_chosen.game);
+                $(".prescription").html(current_user_patient_chosen.prescription);
+  
         });
+
     </script>
 
 </head>
 <body>
     <div class="container">
-        <h1> iXercise Doctor System</h1>
+        <h1> iXercise System</h1>
         <hr>
 
 
@@ -44,10 +51,79 @@
             </ul>
         </div>
 
-        <div id="patient_profile">
-            
-        </div>
+        <div id="profile_div"></div>
 
+
+                        <div class='col-sm-12 col-md-12 col-lg-12 toppad'>
+                            <div class='panel panel-info'>
+                                <div class='panel-heading'>
+
+                                  <h3 class="panel-title"> Patient Prescription / Treatement </h3>   
+                                </div>
+                                <div class='panel-body'>
+                                  <div class='row'>
+                                <div class='col-md-12 col-lg-12'> 
+                                  <table class='table table-user-information'>
+                                    <tbody class="tbody-user-info">
+                                      <tr>
+                                        <td>Prescription</td>
+                                        <td class="prescription"> </td>
+                                    </tr>
+                                      <tr>
+                                        <td>Treatement</td>
+                                        <td class="prescription"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><input name="edit_patient_treatement" type="button" id="edit_patient_treatement" size="20" value=" edit " style="float: right"/></td>
+                                    </tr>
+                                  </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                     
+                        <div class='col-sm-12 col-md-12 col-lg-12 toppad'>
+                            <div class='panel panel-info'>
+                                <div class='panel-heading'>
+
+                                  <h3 class="panel-title"> Recent Results </h3>   
+                                </div>
+                                <div class='panel-body'>
+                                  <div class='row'>
+                                <div class='col-md-12 col-lg-12'> 
+                                  <table class='table table-user-information'>
+                                    <tbody class="tbody-user-info">
+                                      <tr>
+                                        <td>Patient</td>
+                                        <td class="patient_id"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Wattage</td>
+                                        <td class="wattage"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Heart rate</td>
+                                        <td class="heart_rate"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Workload</td>
+                                        <td class="workload"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Game</td>
+                                        <td class="game"> </td>
+                                      </tr>
+                                  </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                        <p> Graphs will be here </p>
     </div> <!-- container end -->
 
 </body>
