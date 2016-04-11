@@ -31,12 +31,52 @@
             </ul>
         </div>
             <div style="padding-top: 20px">
-                <button type="submit" class="btn btn-default btn-lg" style="font-size:13px">compose notification</button>
+                <button type='button' class='modal_button' data-toggle='modal' data-target='#notificationsModal'> compose notification </button>
                 <hr>
                 <h4> Notifications </h4>
                 <table id='notifications_table' class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'></table>
             </div>
         </div>
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="notificationsModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Compose Notification </h4>
+                </div>
+                <div class="modal-body">
+
+                  <form id="edit-patient-profile-form" method="post" style="padding-top: 40px" action="patientProfile.html">
+                      <div class="form-group">
+                          <label> Sender's id: </label>
+                              <input type="text" class="form-control" name="senderID">
+                      </div> <!-- sender div end -->
+
+                      <div class="form-group">
+                          <label> Reciever's id: </label>
+                              <input type="text" class="form-control" name="recieverID">
+                      </div> <!-- reciever div end -->
+
+                      <div class="form-group">
+                          <label> Message: </label>
+                              <input type="text" class="form-control" name="senderMessage">
+                      </div> <!-- reciever div end -->
+
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="send-notification" data-dismiss="modal">Send</button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
 
     </div> <!-- container end -->
 
