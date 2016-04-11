@@ -19,7 +19,8 @@ var current_user_info = {
 					      title: "Doctor",
 					      year_entered: "2015",
 					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
-					      messages: ["Please change the patient prescription - trainer Sarah Johnson", "Add trainer 193847565"], // added this
+					      messages: [{id: "0198475", mes: "Please change the patient prescription"}, 
+					      			 {id: "1726548", mes: "Add trainer 193847565"}], // added this
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
 					      role: [ "admin", "representative","patient_manager" ]
@@ -40,6 +41,29 @@ var current_user_patient_chosen = {
 									game: "Minecraft",
 									prescription: "something here, something here, something here, and more stuff"
 								  };
+
+var current_user_chosen_admin = { 
+					      id: "id",
+					      uid: "UCI_STUDENT_ID",
+					      first_name: "first",
+					      middle_name: "middle",
+					      last_name: "last",
+					      dob: "date_of_birth",
+					      gender: "female",
+					      office: "XXX building Room 215",
+					      email: "asdf@abc.org",
+					      contact: "949-123-1234",
+					      position: "doctor",
+					      title: "Doctor",
+					      year_entered: "2015",
+					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
+					      messages: [{id: "0198475", mes: "Please change the patient prescription"}, 
+					      			 {id: "1726548", mes: "Add trainer 193847565"}], // added this
+					      patients: [ {id: "1234567"}, {id: "89101112"} ],
+					      picture: "filename_id.jpg",
+					      role: [ "admin", "representative","patient_manager" ]
+					    };
+
 
 
 var userDatabase = [{id:"20671754", role:["admin", "doctor"]}, {id:"93867236", role:["trainer"]}];
@@ -217,11 +241,11 @@ $(function(){
 
 		if (prescri != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
-			alert("prescription");
+			//alert("prescription");
 		}
 		if (treate != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
-			alert("treatment");
+			//alert("treatment");
 		}
 
 
@@ -235,7 +259,7 @@ $(function() {
 
 	// This is adding all of the notfications that are in the database and have not been deleted
 	$.each( current_user_info.messages, function(index, m){
-        var html_mess = "<tr><td>"+ m + "</a> " + "</td></tr>";
+        var html_mess = "<tr><td>"+ m.id + "<td>" + m.mes + "</td><td><button type='button' class='close'>&times;</button></td></tr>";
 
         $("#notifications_table").append(html_mess);
     });	
