@@ -17,7 +17,9 @@
         $(document).ready(function(){
 
             $.each( userDatabase, function(index, p){
-                var html = "<tr><td>"+ "<button type='button' class='userModalButton' data-toggle='modal' data-target='userModal'>" + p.id + "</td><td>" + p.role + "</td></tr>";
+                var html = "<tr><td>"+ "<button type='button' class='modal_button' data-toggle='modal' data-target='#userModal'>" + p.id + "</button>" + "</td><td>" + p.role + "</td></tr>";
+
+                //var html = "<tr><td>"+ "<button type='button' class='btn btn-info btn-sm' data-toggle='modal' data-target='#myModal'>" + p.id + "</button>" + "</td><td>" + p.role + "</td></tr>";
 
                 $("#user_table").append(html);
 
@@ -35,12 +37,18 @@
                 document.location.href='userList.html';
             });
 
-            // Will not work if click on the signOut but will only work if you click on a user
-            $("a").click(function() {
-                if($(this).text().trim() != "signOut"){
-                    alert("Works good!! result is " + $(this).text());
-                    // WILL REPLACE THE USER CHOSEN
-                } 
+            // Puts the number of the user chosen on the modal title 
+            $(".modal_button").click(function() {
+                $(".modal-title").html($(this).text() + " Profile");
+
+                // WILL UPDATE THE CURRENT USER CHOSEN ADMIN VAR HERE BEFORE THE REST BELOW
+
+                $(".panel-title").html(current_user_chosen_admin.first_name + " " + current_user_chosen_admin.last_name);
+                $(".user_office").html(current_user_chosen_admin.office);
+                $(".user_email").html(current_user_chosen_admin.email);
+                $(".user_contact").html(current_user_chosen_admin.contact);
+                $(".user_jposition").html(current_user_chosen_admin.position);
+
             });
 
         });
@@ -49,7 +57,7 @@
 
 </head>
 <body id="admin-body">
-        <div class="container">
+    <div class="container">
         <h1 id="admin-title"> iXercise Administrator System </h1>
         <hr>
 
@@ -91,28 +99,57 @@
             </div> 
 
 
-            <!-- Modal -->
-            <div id="userModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
+          <!-- Modal -->
+          <div class="modal fade" id="userModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> </h4>
                 </div>
+                <div class="modal-body">
+                            <div class='panel panel-info'>
+                                <div class='panel-body'>
+                                  <div class='row'>
+                                <div class='col-md-12 col-lg-12'> 
+                                  <table class='table table-user-information'>
+                                    <tbody>
+                                      <tr>
+                                        <td>Office:</td>
+                                        <td class="user_office"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Email:</td>
+                                        <td class="user_email"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Contact:</td>
+                                        <td class="user_contact"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Position</td>
+                                        <td class="user_jposition"> </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
               </div>
+              
             </div>
+          </div> 
+
 
     </div> <!-- container end -->
+
 
 </body>
 </html>
