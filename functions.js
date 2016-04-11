@@ -19,6 +19,7 @@ var current_user_info = {
 					      title: "Doctor",
 					      year_entered: "2015",
 					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
+					      messages: ["Please change the patient prescription - trainer Sarah Johnson", "Add trainer 193847565"], // added this
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
 					      role: [ "admin", "representative","patient_manager" ]
@@ -228,7 +229,14 @@ $(function(){
 
 });
 
-// HAVE TO MAKE IT SO THAT I CAN LOAD THE CORRECT PATIENT WHEN CLICKED AND SO THAT ON THE USER
-// LIST LOAD THE CORRECT USER WHEN CLICKED 
 
-// ALSO HAVE TO THINK ABOUT THE NOTIFICATIONS AND HOW THEY WILL WORK 
+// Notifications page
+$(function() {
+
+	// This is adding all of the notfications that are in the database and have not been deleted
+	$.each( current_user_info.messages, function(index, m){
+        var html_mess = "<tr><td>"+ m + "</a> " + "</td></tr>";
+
+        $("#notifications_table").append(html_mess);
+    });	
+});
