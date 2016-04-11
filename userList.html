@@ -4,17 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>iXercise</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />   
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />
-    <script type="text/javascript" src="jquery/lib/jquery.js"></script>
-    <script type="text/javascript" src="jquery/jquery.autocomplete.js"></script>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="functions.js"></script>
     
@@ -23,7 +17,7 @@
         $(document).ready(function(){
 
             $.each( userDatabase, function(index, p){
-                var html = "<tr><td>"+ p.id + "</td><td>" + p.role + "</td></tr>";
+                var html = "<tr><td>"+ "<button type='button' class='userModalButton' data-toggle='modal' data-target='userModal'>" + p.id + "</td><td>" + p.role + "</td></tr>";
 
                 $("#user_table").append(html);
 
@@ -39,6 +33,14 @@
                 current_user_info.patients.push({'id':$('#remove_user_id').val() });
                 // UPDATE THE DATABASE INFORMATION OF THE USER
                 document.location.href='userList.html';
+            });
+
+            // Will not work if click on the signOut but will only work if you click on a user
+            $("a").click(function() {
+                if($(this).text().trim() != "signOut"){
+                    alert("Works good!! result is " + $(this).text());
+                    // WILL REPLACE THE USER CHOSEN
+                } 
             });
 
         });
@@ -87,6 +89,28 @@
                 <table id='user_table' class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'></table>
                 </div>
             </div> 
+
+
+            <!-- Modal -->
+            <div id="userModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
 
     </div> <!-- container end -->
 
