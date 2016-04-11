@@ -21,10 +21,13 @@
     <script>
 
         $(document).ready(function() {
+
+            // If the link clicked is  not any of the navigation buttons then it will most likely be a patient
             $("a").click(function() {
-                if($(this).text() != Settings || $(this).text() != Patients || $(this).text()!= Notifications || $(this).text() != signOut){
-                    alert("Works good!!");
-                }
+                if($(this).text().trim() != "Settings" && $(this).text().trim() != "Patients" && $(this).text().trim() != "Notifications" && $(this).text().trim() != "signOut"){
+                    //alert("Works good!! result is " + $(this).text());
+                    // WILL REPLACE THE PATIENT CHOSEN
+                } 
             });
         });
 
