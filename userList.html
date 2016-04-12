@@ -26,13 +26,14 @@
             });
 
             $( "#add_user_button" ).click(function() { 
-                current_user_info.patients.push({'id':$('#new_user_id').val() });
+                //alert($('#new_user_id').val());
+                //alert($('#new_user_position').val());
                 // UPDATE THE DATABASE INFORMATION OF THE USER
                 document.location.href='userList.html';
             });
 
             $( "#remove_user_button" ).click(function() { 
-                current_user_info.patients.push({'id':$('#remove_user_id').val() });
+                //alert($('#remove_user_id').val());
                 // UPDATE THE DATABASE INFORMATION OF THE USER
                 document.location.href='userList.html';
             });
