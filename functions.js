@@ -149,14 +149,14 @@ $(function(){
 
     // code when user presses the add patient button
     $( "#add_patient_button" ).click(function() { 
-        alert($('#new_patient_id').val());
+        //alert($('#new_patient_id').val());
         // UPDATE THE DATABASE INFORMATION OF THE USER
         document.location.href='patientList.html';
 	});
 
     // code when user presses the remove button
     $( "#remove_patient_button" ).click(function() { 
-        alert($('#remove_patient_id').val());
+        //alert($('#remove_patient_id').val());
         // UPDATE THE DATABASE INFORMATION OF THE USER
         document.location.href='patientList.html';
 	});
@@ -254,12 +254,19 @@ $(function(){
 			//alert("treatment");
 		}
 
+	});
 
+	// Function to send email 
+	$(".send-notification").click(function(){
+		// Will update the database with the message 
+		//alert($('#edit-patient-profile-form').find('input[name="senderID"]').val());
+		//alert($('#edit-patient-profile-form').find('input[name="recieverID"]').val());
+		//alert($('#edit-patient-profile-form').find('input[name="senderMessage"]').val());
 	});
 
 });
 
-
+/*
 // Notifications page
 $(function() {
 
@@ -278,3 +285,4 @@ $(function() {
 	});
 
 });
+*/
