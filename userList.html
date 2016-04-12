@@ -44,7 +44,7 @@
 
                 // WILL UPDATE THE CURRENT USER CHOSEN ADMIN VAR HERE BEFORE THE REST BELOW
 
-                $(".panel-title").html(current_user_chosen_admin.first_name + " " + current_user_chosen_admin.last_name);
+                $(".user_name").html(current_user_chosen_admin.first_name + " " + current_user_chosen_admin.last_name);
                 $(".user_office").html(current_user_chosen_admin.office);
                 $(".user_email").html(current_user_chosen_admin.email);
                 $(".user_contact").html(current_user_chosen_admin.contact);
@@ -117,6 +117,10 @@
                                 <div class='col-md-12 col-lg-12'> 
                                   <table class='table table-user-information'>
                                     <tbody>
+                                     <tr>
+                                        <td>Name:</td>
+                                        <td class="user_name"> </td>
+                                      </tr>
                                       <tr>
                                         <td>Office:</td>
                                         <td class="user_office"> </td>
