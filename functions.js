@@ -23,7 +23,7 @@ var current_user_info = {
 					      			 {id: "1726548", mes: "Add trainer 193847565"}, {id: '0958376', mes: "Recommended change of treatement for patient 2938747 should be blah blah blah"}], // added this
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
-					      role: [ "admin", "representative","patient_manager" ]
+					      role: [ "admin", "representative", "trainer","patient_manager" ]
 					      // ADD trainer AS ONE OF THE ROLES TO SEE THE DIFFERENCE BETWEEN THE 
 					      // FUNCTIONS THAT A DOCTOR OR TRAINER CAN DO WITH THE SYSTEM
 					    };
@@ -272,9 +272,16 @@ $(function() {
 
 	$(".send-notification").click(function(){
 		// Will update the database with the message 
+<<<<<<< HEAD
 		//alert($('#edit-patient-profile-form').find('input[name="senderID"]').val());
 		//alert($('#edit-patient-profile-form').find('input[name="recieverID"]').val());
 		//alert($('#edit-patient-profile-form').find('input[name="senderMessage"]').val());
 	});
 
 });
+=======
+		//alert("Successful");
+	}) ;
+
+});
+>>>>>>> origin/master
