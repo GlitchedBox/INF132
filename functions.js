@@ -261,7 +261,7 @@ $(function(){
 		// Will update the database with the message 
 		//alert($('#edit-patient-profile-form').find('input[name="senderID"]').val());
 		//alert($('#edit-patient-profile-form').find('input[name="recieverID"]').val());
-		//alert($('#edit-patient-profile-form').find('input[name="senderMessage"]').val());
+		//alert($('#senderMessage').val());
 	});
 
 });
