@@ -23,7 +23,7 @@ var current_user_info = {
 					      			 {id: "1726548", mes: "Add trainer 193847565"}, {id: '0958376', mes: "Recommended change of treatement for patient 2938747 should be blah blah blah"}], // added this
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
-					      role: [ "admin", "representative","patient_manager" ]
+					      role: [ "admin", "representative", "trainer","patient_manager" ]
 					      // ADD trainer AS ONE OF THE ROLES TO SEE THE DIFFERENCE BETWEEN THE 
 					      // FUNCTIONS THAT A DOCTOR OR TRAINER CAN DO WITH THE SYSTEM
 					    };
@@ -178,21 +178,27 @@ $(function() {
 		var ema = $('#edit-user-profile-form').find('input[name="email"]').val();
 		var cont = $('#edit-user-profile-form').find('input[name="contact"]').val();
 		var posi = $('#edit-user-profile-form').find('input[name="position"]').val();
-		var admin_status_priv_on = $("#yes-admin-priv").attr('checked');
-		var admin_status_priv_off = $("#no-admin-priv").attr('checked');
+		var admin_status_priv_on = $("#yes-admin-priv").is(':checked');
+		var admin_status_priv_off = $("#no-admin-priv").is(':checked');
+		//alert(admin_status_priv_on);
+		//alert(admin_status_priv_off);
 
 
 		if (off != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("off");
 		}
 		if (ema != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("em");
 		}
 		if (cont != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("cont");
 		}
 		if (posi != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("posi");
 		}
 
 		if (admin_status_priv_on == true && admin_status_priv_off == false){
