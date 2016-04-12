@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>iXercise</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />   
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="functions.js"></script>
+    
+
+</head>
+<body>
+    <div class="container">
+        <h1> iXercise System</h1>
+        <hr>
+
+
+        <!-- Have a navigation bar for the patients and the trainers -->
+        <div class="nav">
+            <ul>
+                <li class="patients"><a href="userProfile.html"> Settings </a></li>
+                <li class="patients"><a href="patientList.html"> Patients </a></li>
+                <li class="trainers"><a href="notifications.html"> Notifications </a></li>
+                <li class="trainers"><a href="loginScreen.html"> signOut </a></li>
+
+            </ul>
+        </div>
+
+        <div id="edit_userProfile_div"></div>
+
+            <div class="col-sm-6 col-sm-offset-3">
+                <label id="toggle-label" style="padding-top: 40px"> Administrator Privaleges </label><br>
+                <input id="yes-admin-priv" type="checkbox"> On
+                <input id="no-admin-priv" type="checkbox"> Off
+                <hr>
+
+                <form id="edit-user-profile-form" method="post" action="userProfile.html">
+                    <div class="form-group">
+                        <label>Office</label>
+                            <input type="text" id="office-edit" class="form-control" name="office">
+                    </div> <!-- office div end -->
+
+                    <div class="form-group">
+                        <label>Email</label>
+                            <input type="text" id="email-edit" class="form-control" name="email">
+                    </div> <!-- email div end -->
+
+                    <div class="form-group">
+                        <label>Contact</label>
+                            <input type="text" id="contact-edit" class="form-control" name="contact">
+                    </div> <!-- contact div end -->
+
+                    <div class="form-group">
+                        <label>Position</label>
+                            <input type="text" id="position-edit" class="form-control" name="position">
+                    </div> <!-- position div end -->
+
+                    <button type="submit" class="save-user_profile-info">Save</button>
+
+                </form>
+
+            </div>
+    </div> <!-- container end -->
+
+</body>
+</html>

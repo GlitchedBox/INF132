@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>iXercise</title>
+
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />   
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="functions.js"></script>
+
+    <script>
+
+      $(document).ready(function(){
+        $(".delete-notification-x").click(function(){
+          var sender_id = $(this).attr("id");
+          // Will update the database and remove the message with this sender's id but will also need some form of timestamp
+          // to remove it 
+        });
+      });
+
+    </script>
+
+</head>
+<body>
+        <div class="container">
+        <h1> iXercise System</h1>
+        <hr>
+
+
+        <!-- Have a navigation bar for the patients and the trainers -->
+        <div class="nav">
+            <ul>
+                <li class="patients"><a href="userProfile.html"> Settings </a></li>
+                <li class="patients"><a href="patientList.html"> Patients </a></li>
+                <li class="trainers"><a href="notifications.html" style="background-color: #005f5f"> Notifications </a></li>
+                <li class="trainers"><a href="loginScreen.html"> signOut </a></li>
+
+            </ul>
+        </div>
+            <div style="padding-top: 20px">
+                <button type='button' class='modal_button' data-toggle='modal' data-target='#notificationsModal'> compose notification </button>
+                <hr>
+
+                <table id='notifications_table' class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'>
+
+                    <tr><td>Sender ID</td><td>Sender Message</td><td> Delete</td></tr>
+                
+                </table>
+            </div>
+        </div>
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="notificationsModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Compose Notification </h4>
+                </div>
+                <div class="modal-body">
+
+                  <form id="edit-patient-profile-form" method="post" action="patientProfile.html">
+                      <div class="form-group">
+                          <label> Sender's id: </label>
+                              <input type="text" class="form-control" name="senderID">
+                      </div> <!-- sender div end -->
+
+                      <div class="form-group">
+                          <label> Reciever's id: </label>
+                              <input type="text" class="form-control" name="recieverID">
+                      </div> <!-- reciever div end -->
+
+                      <div class="form-group">
+                          <label> Message: </label>
+                              <input type="text" class="form-control" name="senderMessage">
+                      </div> <!-- reciever div end -->
+
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="send-notification" data-dismiss="modal">Send</button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+
+    </div> <!-- container end -->
+
+</body>
+</html>
