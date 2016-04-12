@@ -7,9 +7,9 @@ var current_user_postion = "";
 var current_user_info = { 
 					      id: "id",
 					      uid: "UCI_STUDENT_ID",
-					      first_name: "first",
-					      middle_name: "middle",
-					      last_name: "last",
+					      first_name: "Sarah",
+					      middle_name: "K.",
+					      last_name: "Johnson",
 					      dob: "date_of_birth",
 					      gender: "female",
 					      office: "XXX building Room 215",
@@ -19,8 +19,8 @@ var current_user_info = {
 					      title: "Doctor",
 					      year_entered: "2015",
 					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
-					      messages: [{id: "0198475", mes: "Please change the patient prescription"}, 
-					      			 {id: "1726548", mes: "Add trainer 193847565"}], // added this
+					      messages: [{id: "0198475", mes: "Please change the patient prescription. Patient has blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah "}, 
+					      			 {id: "1726548", mes: "Add trainer 193847565"}, {id: '0958376', mes: "Recommended change of treatement for patient 2938747 should be blah blah blah"}], // added this
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
 					      role: [ "admin", "representative","patient_manager" ]
@@ -57,7 +57,7 @@ var current_user_chosen_admin = {
 					      title: "Doctor",
 					      year_entered: "2015",
 					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
-					      messages: [{id: "0198475", mes: "Please change the patient prescription"}, 
+					      messages: [{id: "0198475", mes: "Please change the patient prescription."}, 
 					      			 {id: "1726548", mes: "Add trainer 193847565"}], // added this
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
@@ -88,6 +88,9 @@ $(function(){
 
 	  	// WILL HAVE TO CHECK IN THE DATABASE TO SEE IF THEY ARE IN THE SYSTEM HERE SO THAT WE DO IT ONCE, 
 	  	// IF NOT THEN MAKE BOOL VARIABLES THAT INDICATE WHAT THEY HAVE INPUTED INCORRECTLY
+	  	//alert($("#lg_id").val());
+	  	//alert($("#lg_password").val());
+	  	//alert(current_user_position);
 
 	  	if (current_user_position == "Doctor"){
 	  		// IF THEY HAVE INPUTED THE USERNAME OR PASSWORD WRONG THEN SHOW A FLASH MESSAGE, IF
@@ -114,6 +117,10 @@ $(function(){
 $(function(){
 
 	  $('#signup-form').submit(function() {
+
+	  	//alert($("#sg_id").val());
+	  	//alert($("#sg_password").val());
+	  	//alert(current_user_position);
 
 	  	if (current_user_position == "Doctor"){
 	  		// WILL ADD THE USER TO THE DATABASE WITH THIS POSITION
@@ -142,24 +149,17 @@ $(function(){
 
     // code when user presses the add patient button
     $( "#add_patient_button" ).click(function() { 
-        current_user_info.patients.push({'id':$('#new_patient_id').val() });
+        alert($('#new_patient_id').val());
         // UPDATE THE DATABASE INFORMATION OF THE USER
         document.location.href='patientList.html';
 	});
 
     // code when user presses the remove button
     $( "#remove_patient_button" ).click(function() { 
-        current_user_info.patients.push({'id':$('#remove_patient_id').val() });
+        alert($('#remove_patient_id').val());
         // UPDATE THE DATABASE INFORMATION OF THE USER
         document.location.href='patientList.html';
 	});
-
-
-    //current_user_patient_chosen = "hi";
-    // code for when user clicks on a patient in the list
-    //$("a").click(function() {
-    //	current_user_patient_chosen = $(this).text();
-    //});
 
 });
 
@@ -178,21 +178,27 @@ $(function() {
 		var ema = $('#edit-user-profile-form').find('input[name="email"]').val();
 		var cont = $('#edit-user-profile-form').find('input[name="contact"]').val();
 		var posi = $('#edit-user-profile-form').find('input[name="position"]').val();
-		var admin_status_priv_on = $("#yes-admin-priv").attr('checked');
-		var admin_status_priv_off = $("#no-admin-priv").attr('checked');
+		var admin_status_priv_on = $("#yes-admin-priv").is(':checked');
+		var admin_status_priv_off = $("#no-admin-priv").is(':checked');
+		//alert(admin_status_priv_on);
+		//alert(admin_status_priv_off);
 
 
 		if (off != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("off");
 		}
 		if (ema != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("em");
 		}
 		if (cont != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("cont");
 		}
 		if (posi != ""){
 			// HERE WE WILL REPLACE THE USER DATABASE WITH THIS INFORMATION
+			//alert("posi");
 		}
 
 		if (admin_status_priv_on == true && admin_status_priv_off == false){
@@ -259,8 +265,16 @@ $(function() {
 
 	// This is adding all of the notfications that are in the database and have not been deleted
 	$.each( current_user_info.messages, function(index, m){
-        var html_mess = "<tr><td>"+ m.id + "<td>" + m.mes + "</td><td><button type='button' class='close'>&times;</button></td></tr>";
+        var html_mess = "<tr><td>"+ m.id + "</td><td>" + m.mes + "</td><td><button type='button' id='" +m.id+ "' class='delete-notification-x'>&times;</button></td></tr>";
 
         $("#notifications_table").append(html_mess);
     });	
+
+	$(".send-notification").click(function(){
+		// Will update the database with the message 
+		//alert($('#edit-patient-profile-form').find('input[name="senderID"]').val());
+		//alert($('#edit-patient-profile-form').find('input[name="recieverID"]').val());
+		//alert($('#edit-patient-profile-form').find('input[name="senderMessage"]').val());
+	});
+
 });
