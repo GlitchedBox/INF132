@@ -2,8 +2,11 @@
 
 // These are the variables that will be used throughout the entire program and their
 // values will be from the databases
+
 var current_user_id = 0;
 var current_user_postion = "";
+
+/// WEB APP USER DATABASE
 var current_user_info = { 
 					      id: "id",
 					      uid: "UCI_STUDENT_ID",
@@ -28,19 +31,6 @@ var current_user_info = {
 					      // FUNCTIONS THAT A DOCTOR OR TRAINER CAN DO WITH THE SYSTEM
 					    };
 
-var current_user_patient_chosen = {
-									id: "1234567",
-									first_name: "patient_first",
-									last_name: "patient_last",
-									dob: "date_of_birth",
-									gender: "male",
-									email: "blah@uci.edu",
-									wattage: "100 Watts",
-									heart_rate: "150 beats per minute",
-									workload: "1hr",
-									game: "Minecraft",
-									prescription: "something here, something here, something here, and more stuff"
-								  };
 
 var current_user_chosen_admin = { 
 					      id: "id",
@@ -63,11 +53,28 @@ var current_user_chosen_admin = {
 					      picture: "filename_id.jpg",
 					      role: [ "admin", "representative","patient_manager" ]
 					    };
+////////////////////
 
+///// TA GAME DATABASE
+var current_user_patient_chosen = {
+									id: "1234567",
+									first_name: "patient_first",
+									last_name: "patient_last",
+									dob: "date_of_birth",
+									gender: "male",
+									email: "blah@uci.edu",
+									wattage: "100 Watts",
+									heart_rate: "150 beats per minute",
+									workload: "1hr",
+									game: "Minecraft",
+									prescription: "something here, something here, something here, and more stuff"
+								  };
 
+/////////////////////
 
-var userDatabase = [{id:"20671754", role:["admin", "doctor"]}, {id:"93867236", role:["trainer"]}];
-
+//// ADMIN DATABASE
+var userDatabase = [{id:"1234567", pass:"password1", role:["admin", "doctor"]}, {id:"0987654", pass:"password2",role:["trainer"]}];
+///////////////////
 
 // This function is for the signup and the login screen when the user picks an occupation
 $(function(){
@@ -88,25 +95,63 @@ $(function(){
 
 	  	// WILL HAVE TO CHECK IN THE DATABASE TO SEE IF THEY ARE IN THE SYSTEM HERE SO THAT WE DO IT ONCE, 
 	  	// IF NOT THEN MAKE BOOL VARIABLES THAT INDICATE WHAT THEY HAVE INPUTED INCORRECTLY
-	  	//alert($("#lg_id").val());
+
+	    //alert($("#lg_id").val());
 	  	//alert($("#lg_password").val());
 	  	//alert(current_user_position);
 
 	  	if (current_user_position == "Doctor"){
-	  		// IF THEY HAVE INPUTED THE USERNAME OR PASSWORD WRONG THEN SHOW A FLASH MESSAGE, IF
-	  		// BOTH VARIABLES ARE TRUE, THEN CHECK TO SEE IF THEY HAVE CORRECTLY PUT IN THE POSITION
-	  		// IF NOT SHOW A FLASH MESSAGE
-	    	$(this).attr('action', 'patientList.html'); 
+
+		    $.each( userDatabase, function(index, p){
+
+
+		    	if ($("#lg_id").val() == p.id && $("#lg_password").val() == p.pass && $.inArray('doctor', p.role) != -1){ 
+		    		current_user_id = p.id;
+		    		$("#login-form").attr('action', 'patientList.html'); 
+		    	} 
+		    	else if ($("#lg_id").val() == p.id && $("#lg_password").val() != p.pass){
+		    		alert("id or password incorrect");
+		    	}
+		    	else if ($("#lg_id").val() == p.id  && $.inArray('doctor', p.role) == -1){
+		    		alert("selected the incorrect role");
+		    	}
+
+		    });
+	    	//$(this).attr('action', 'patientList.html'); 
 	  	} else if (current_user_position == "Trainer"){
-	  		// IF THEY HAVE INPUTED THE USERNAME OR PASSWORD WRONG THEN SHOW A FLASH MESSAGE, IF
-	  		// BOTH VARIABLES ARE TRUE, THEN CHECK TO SEE IF THEY HAVE CORRECTLY PUT IN THE POSITION
-	  		// IF NOT SHOW A FLASH MESSAGE
-	  		$(this).attr('action', 'patientList.html'); 
+
+		    $.each( userDatabase, function(index, p){
+
+		    	if ($("#lg_id").val() == p.id && $("#lg_password").val() == p.pass && $.inArray('trainer', p.role) != -1){ 
+		    		current_user_id = p.id;
+		    		$("#login-form").attr('action', 'patientList.html'); 
+		    	} 
+		    	else if ($("#lg_id").val() == p.id && $("#lg_password").val() != p.pass){
+		    		alert("id or password incorrect");
+		    	}
+		    	else if ($("#lg_id").val() == p.id && $.inArray('trainer', p.role) == -1){
+		    		alert("selected the incorrect role");
+		    	}
+
+		    });
+	  		//$(this).attr('action', 'patientList.html'); 
 	  	} else if (current_user_position == "Administrator"){
-	  		// IF THEY HAVE INPUTED THE USERNAME OR PASSWORD WRONG THEN SHOW A FLASH MESSAGE, IF
-	  		// BOTH VARIABLES ARE TRUE, THEN CHECK TO SEE IF THEY HAVE CORRECTLY PUT IN THE POSITION
-	  		// IF NOT SHOW A FLASH MESSAGE
-	  		$(this).attr('action', 'userList.html');
+
+		    $.each( userDatabase, function(index, p){
+
+		    	if ($("#lg_id").val() == p.id && $("#lg_password").val() == p.pass && $.inArray("admin", p.role) != -1){ 
+		    		current_user_id = p.id;
+		    		$("#login-form").attr('action', 'userList.html');
+		    	} 
+		    	else if ($("#lg_id").val() == p.id && $("#lg_password").val() != p.pass){
+		    		alert("id or password incorrect");
+		    	}
+		    	else if ($("#lg_id").val() == p.id  && $.inArray('admin', p.role) == -1){
+		    		alert("selected the incorrect role");
+		    	}
+
+		    });
+	  		//$(this).attr('action', 'userList.html');
 	  	}
 
 	  }); 
