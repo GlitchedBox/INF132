@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>iXercise</title>
+
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />   
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="functions.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $(".modal_button").click(function() {
+                $(".modal-title").html($(this).text() + " Profile");
+
+                // WILL UPDATE THE CURRENT USER CHOSEN ADMIN VAR HERE BEFORE THE REST BELOW
+                $(".patient_id").html(current_user_patient_chosen.id);
+                $(".patient_name").html(current_user_patient_chosen.first_name + " " + current_user_patient_chosen.last_name);
+                $(".patient_dob").html(current_user_patient_chosen.dob);
+            });
+
+              $(".view_patient_info").click(function(){
+                document.location.href='patientProfileD.html';
+              });
+
+            $("#admin-toggle").change(function() {
+              if ($("#admin-toggle").prop('checked')){
+                  document.location.href='admin_doctor.html';
+              }
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1> iXercise System </h1>
+        <hr>
+
+
+        <!-- Have a navigation bar for the patients and the trainers -->
+        <div class="nav">
+            <ul>
+                <li class="patients"><a href="patientList.html" style="background-color: #005f5f"> Main </a></li>
+                <li class="trainers"><a href="loginScreen.html"> signOut </a></li>
+
+            </ul>
+        </div>
+
+            <div style="padding-top: 20px">
+                <table class='table table-user-information'>
+                  <tbody>
+                    <tr>
+                      <td> Turn on Admin privelages? <input id="admin-toggle" type="checkbox" data-toggle="toggle" data-size="small"> </td>
+                      <td>
+
+                        <div class="btn-group" style="float:right">
+                          <button type="button" class="btn btn-secondary">More Actions</button>
+                          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" style="height:34px">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="change_password.html"> edit password </a></li>
+                            <li><a href="compose_message.html"> compose message </a></li>
+                            <!--
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          -->
+                          </ul>
+                        </div>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <hr>
+            </div>
+
+
+          <!-- This is the patient overview graph -->
+              <div style="padding-top: 10px">
+                 <div class='panel panel-info'>
+                    <div class='panel-heading'>
+
+                      <h3 class="panel-title"> Patient Overview </h3>   
+                      </div>
+                        <div class='panel-body'>
+                            <p> This will contain a graph </p>
+                            <div class='row'>
+                          <div class='col-md-12 col-lg-12'> 
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                
+        <!-- This will be the title and the column labels -->
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Add/Remove Patients </h4>
+                <table class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'>
+                    <tr>
+                        <td> Patient id </td>
+                        <td><input name="new_patient_id" type="text" id="new_patient_id" placeholder="########" size="20"/></td>   
+                        <td><input name="add_patient_button" type="button" id="add_patient_buttonD" size="20" value="Add" /></td>
+                    </tr>
+                    <tr>
+                        <td> Patient id </td>
+                        <td><input name="remove_patient_id" type="text" id="remove_patient_id" placeholder="########" size="20"/></td>
+                        <td><input name="remove_patient_button" type="button" id="remove_patient_buttonD" size="20" value="Remove" /></td>
+                    </tr>
+                </table>
+
+
+            <!-- This is the table that will contain all of the patients -->
+            <div id="patient_list_div"> 
+                <hr>
+                <h4> Patient List </h4>
+                <table id='patient_table' class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'></table>
+                </div>
+                <hr><br></br>
+            </div> 
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="patientListModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> </h4>
+                </div>
+                <div class="modal-body">
+                            <div class='panel panel-info'>
+                                <div class='panel-body'>
+                                  <div class='row'>
+                                    <div class='col-md-3 col-lg-3 ' align='center'> <img alt='User Pic' src='#' class='img-circle img-responsive'> 
+                                    </div>
+                                <div class='col-md-9 col-lg-9'> 
+                                  <table class='table table-user-information'>
+                                    <tbody>
+                                      <tr>
+                                        <td> Name </td>
+                                        <td class="patient_name"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td> ID </td>
+                                        <td class="patient_id"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td> Date of Birth </td>
+                                        <td class="patient_dob"> </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                  <button type='button' class='view_patient_info'> view patient stats </button>
+
+                                </div>
+                              </div>
+                            </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+          
+
+    </div> <!-- container end -->
+
+</body>
+</html>
