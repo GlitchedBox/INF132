@@ -1,7 +1,6 @@
 # INF132 
 Program for class, please do not alter or make changes to it for now unless in the group.
 
-WE ARE USING DUMMY INFORMATION
 Based on which user you want to test go to the functions.js file and on the current_user_info variable in the role section, you will replace trainer with doctor, and vice versa if doctor is there already.
 
 To test the doctor
