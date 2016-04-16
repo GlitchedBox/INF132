@@ -52,12 +52,6 @@
 
             });
 
-            $("#admin-doctor-toggle").change(function() {
-              if ($("#admin-doctor-toggle").prop('checked') == false){
-                  document.location.href='patientListD.html';
-              }
-            });
-
         });
 
     </script>
@@ -68,11 +62,18 @@
         <h1 id="admin-title"> iXercise Administrator System </h1>
         <hr>
 
-        Turn off Admin privelages? <input id="admin-doctor-toggle" type="checkbox" checked data-toggle="toggle" data-size="small"> <hr>
+        <div class="nav">
+            <ul id="nav_list">
+                <li class="patients"><a href="patientListD.html"> Main </a></li>
+                <li><a href='admin_doctor.html' style='background-color: #005f5f'> Admin </a></li>
+                <li class="trainers"><a href="loginScreen.html"> signOut </a></li>
+
+            </ul>
+        </div>
 
         <!-- This will be the title and the column labels -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="padding-top:20px">
                 <h4> Add/Remove Users </h4>
                 <table class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'>
                     <tr>
@@ -82,10 +83,7 @@
                             
                             <td> Occupation </td>
                             <td><input name="new_user_position" type="text" id="new_user_position" placeholder="doctor, trainer, admin" size="20"/></td>
-
-                            <td> Temp Password </td>
-                            <td><input name="new_user_password" type="text" id="new_user_password" placeholder="*********" size="20"/></td>
-                            
+     
                             <td><input name="add_user_button" type="button" id="add_user_button" size="20" value="Add" /></td>
                     </tr>
 
@@ -93,7 +91,7 @@
                             <td> user id </td>
                             <td><input name="remove_user_id" type="text" id="remove_user_id" placeholder="#######" size="20"/></td>
                             
-                            <td></td><td></td><td></td><td></td>
+                            <td></td><td></td>
                             <td><input name="remove_user_button" type="button" id="remove_user_button" size="20" value="Remove" /></td>
                     </tr>
                 </table>
