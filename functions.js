@@ -24,7 +24,11 @@ var current_user_info = {
 					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
+<<<<<<< HEAD
 					      role: ["trainer"]
+=======
+					      role: ["doctor"]
+>>>>>>> origin/master
 					    };
 
 
@@ -109,9 +113,15 @@ $(function(){
 		    } 
 
 	// THIS WAS ADDED FOR TESTING PURPOSES - DEFAULT TO THE DOCTORS PAGE
+<<<<<<< HEAD
 		   //else {
 		    //	$("#login-form").attr('action', 'patientListD.html'); 
 		    //}
+=======
+		   else {
+		    	$("#login-form").attr('action', 'patientListD.html'); 
+		   }
+>>>>>>> origin/master
 
 
 	  	});
