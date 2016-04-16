@@ -24,7 +24,7 @@ var current_user_info = {
 					      reports_to: [ {id: "0198475"},  {id: "1726548"} ],
 					      patients: [ {id: "1234567"}, {id: "89101112"} ],
 					      picture: "filename_id.jpg",
-					      role: ["trainer"]
+					      role: ["doctor"]
 					    };
 
 
