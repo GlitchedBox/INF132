@@ -17,6 +17,22 @@
 
         $(document).ready(function() {
 
+
+            if($.inArray('admin', current_user_info.role) != -1){
+                var html_nav = "<li><a href='patientListD.html'> Main </a></li><li><a href='admin_doctor.html'> Admin </a></li><li><a href='loginScreen.html'> signOut </a></li>";
+
+                $("#nav_list").append(html_nav);
+            } else if($.inArray('doctor', current_user_info.role) != -1){
+                var html_nav = "<li><a href='patientListD.html'> Main </a></li><li><a href='loginScreen.html'> signOut </a></li>";
+
+                $("#nav_list").append(html_nav);
+            } else {
+                var html_nav = "<li><a href='patientListT.html' style='background-color: #005f5f'> Main </a></li><li><a href='loginScreen.html'> signOut </a></li>";
+
+                $("#nav_list").append(html_nav);
+            };
+
+
               $(".send-notification").click(function(){
                 // Here we will send the information to the sender 
                 if ($.inArray('doctor', current_user_info.role) != -1){
@@ -24,17 +40,6 @@
                 } else if ($.inArray('trainer', current_user_info.role) != -1){
                   document.location.href='patientListT.html';
                 }
-              });
-
-              $("a").click(function(){
-
-                  if($(this).text().trim() == "Main"){
-                    if ($.inArray('doctor', current_user_info.role) != -1){
-                      document.location.href='patientListD.html';
-                    } else if ($.inArray('trainer', current_user_info.role) != -1){
-                      document.location.href='patientListT.html';
-                    }
-                  };
               });
 
         });
@@ -46,14 +51,9 @@
         <h1> iXercise System </h1>
         <hr>
 
-
         <!-- Have a navigation bar for the patients and the trainers -->
         <div class="nav">
-            <ul>
-                <li class="patients"><a href="#"> Main </a></li> 
-                <li class="trainers"><a href="loginScreen.html"> signOut </a></li>
-
-            </ul>
+            <ul id="nav_list"> </ul>
         </div>
 
           <div class="col-sm-6 col-sm-offset-3" style="padding-top:40px">
