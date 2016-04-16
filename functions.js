@@ -102,7 +102,7 @@ $(function(){
 		    	current_user_id = p.id;
 		    	//alert($("#lg_id").val());
 		    	//alert($("#lg_password").val());
-		    	$("#login-form").attr('action', 'patientPage.html'); 
+		    	$("#login-form").attr('action', 'patientProfileP.html'); 
 		    } 
 		    else if ($("#lg_id").val() == p.id && $("#lg_password").val() != p.pass){ 
 		    	alert("incorrect id or password");
