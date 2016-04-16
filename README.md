@@ -7,9 +7,11 @@ By default, if you do not put in a password, you go to the doctor's version of t
 Based on which user you want to test go to the functions.js file and on the current_user_info variable, in the role section, you will remove doctor and admin, and put trainer or vice versa.
 
 Comment out in the very first function of the login:
+
 		   else {
 		    	$("#login-form").attr('action', 'patientListD.html'); 
 		    }
+			
 becuase if not you will always go to the doctor version of the program, no matter what you want to test.
 
 To test the doctor
