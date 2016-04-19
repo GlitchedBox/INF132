@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>iXercise</title>
+
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.autocomplete.css" />   
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="functions.js"></script>
+    
+    <script>
+    
+        $(document).ready(function(){
+
+            $.each( userDatabase, function(index, p){
+                var html = "<tr><td>"+ "<button type='button' class='modal_button' data-toggle='modal' data-target='#userModal'>" + p.id + "</button>" + "</td><td>" + p.role + "</td></tr>";
+
+                //var html = "<tr><td>"+ "<button type='button' class='btn btn-info btn-sm' data-toggle='modal' data-target='#myModal'>" + p.id + "</button>" + "</td><td>" + p.role + "</td></tr>";
+
+                $("#user_table").append(html);
+
+            });
+
+            $( "#add_user_button" ).click(function() { 
+                //alert($('#new_user_id').val());
+                //alert($('#new_user_position').val());
+                // UPDATE THE DATABASE INFORMATION OF THE USER
+                document.location.href='admin_doctor.html';
+            });
+
+            $( "#remove_user_button" ).click(function() { 
+                //alert($('#remove_user_id').val());
+                // UPDATE THE DATABASE INFORMATION OF THE USER
+                document.location.href='admin_doctor.html';
+            });
+
+            // Puts the number of the user chosen on the modal title 
+            $(".modal_button").click(function() {
+                $(".modal-title").html($(this).text() + " Profile");
+
+                // WILL UPDATE THE CURRENT USER CHOSEN ADMIN VAR HERE BEFORE THE REST BELOW
+
+                $(".user_name").html(current_user_chosen_admin.first_name + " " + current_user_chosen_admin.last_name);
+                $(".user_email").html(current_user_chosen_admin.email);
+
+            });
+
+        });
+
+    </script>
+
+</head>
+<body id="admin-body">
+    <div class="container">
+        <h1 id="admin-title"> iXercise Administrator System </h1>
+        <hr>
+
+        <div class="nav">
+            <ul id="nav_list">
+                <li class="patients"><a href="patientListD.html"> Main </a></li>
+                <li><a href='admin_doctor.html' style='background-color: #005f5f'> Admin </a></li>
+                <li class="trainers"><a id='signout' href="loginScreen.html"> signOut </a></li>
+
+            </ul>
+        </div>
+
+        <!-- This will be the title and the column labels -->
+        <div class="row">
+            <div class="col-md-12" style="padding-top:20px">
+                <h4> Add/Remove Users </h4>
+                <table class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'>
+                    <tr>
+
+                            <td> user id </td>
+                            <td><input name="new_user_id" type="text" id="new_user_id" placeholder="#######" size="20"/></td>
+                            
+                            <td> Occupation </td>
+                            <td><input name="new_user_position" type="text" id="new_user_position" placeholder="doctor, trainer, admin" size="20"/></td>
+     
+                            <td><input name="add_user_button" type="button" id="add_user_button" size="20" value="Add" /></td>
+                    </tr>
+
+                    <tr>
+                            <td> user id </td>
+                            <td><input name="remove_user_id" type="text" id="remove_user_id" placeholder="#######" size="20"/></td>
+                            
+                            <td></td><td></td>
+                            <td><input name="remove_user_button" type="button" id="remove_user_button" size="20" value="Remove" /></td>
+                    </tr>
+                </table>
+
+
+                <div id="user_list_div"> 
+                <hr>
+                <h4> User List </h4>
+
+                <table id='user_table' class="table table-bordred table-striped" border='0' width='50%' align='center' style="border-collapse:collapse" cellspacing='3' cellpadding='5'></table>
+                </div>
+            </div> 
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="userModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> </h4>
+                </div>
+                <div class="modal-body">
+                            <div class='panel panel-info'>
+                                <div class='panel-body'>
+                                  <div class='row'>
+                                    <div class='col-md-3 col-lg-3 ' align='center'> <img alt='User Pic' src='#' class='img-circle img-responsive'> 
+                                    </div>
+                                <div class='col-md-9 col-lg-9'> 
+                                  <table class='table table-user-information'>
+                                    <tbody>
+                                     <tr>
+                                        <td>Name:</td>
+                                        <td class="user_name"> </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Email:</td>
+                                        <td class="user_email"> </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+
+
+    </div> <!-- container end -->
+
+
+</body>
+</html>
