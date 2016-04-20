@@ -59,9 +59,13 @@
 
             $("#admin-toggle").change(function() {
               if ($("#admin-toggle").prop('checked')){
+                  var role_change = ["doctor", "admin"];
+                  localStorage.setItem("role", JSON.stringify(role_change));
                   document.location.href='patientListD.html';
               }
               else {
+                  var role_change = ["doctor"];
+                  localStorage.setItem("role", JSON.stringify(role_change));
                   document.location.href='patientListD.html';
               }
             });
