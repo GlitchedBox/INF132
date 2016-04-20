@@ -158,7 +158,7 @@ $(function(){
     $( "#remove_patient_buttonD" ).click(function() { 
         //alert($('#remove_patient_id').val());
         // UPDATE THE ADMIN DATABASE INFORMATION OF THE USER
-        alert("New patient will disappear below on the list but does not now becuase we have not implemented the database");
+        alert("Patient will disappear below on the list but does not now becuase we have not implemented the database");
         document.location.href='patientListD.html';
 	});
 
@@ -175,7 +175,7 @@ $(function(){
     $( "#remove_patient_buttonT" ).click(function() { 
         //alert($('#remove_patient_id').val());
         // UPDATE THE ADMIN DATABASE INFORMATION OF THE USER
-        alert("New patient will disappear below on the list but does not now becuase we have not implemented the database");
+        alert("Patient will disappear below on the list but does not now becuase we have not implemented the database");
         document.location.href='patientListT.html';
 	});
 
