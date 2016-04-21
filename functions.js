@@ -66,7 +66,7 @@ var current_user_patient_chosen = {
 /////////////////////
 
 //// ADMIN DATABASE
-var userDatabase = [{id:"d", pass:"1", role:["doctor","admin"]}, {id:"t", pass:"2",role:["trainer"]}, {id:"a", pass:"3",role:["admin"]}, {id:"p", pass:"4",role:["patient"]}];
+var userDatabase = [{id:"d", pass:"1", role:["doctor"]}, {id:"t", pass:"2",role:["trainer"]}, {id:"a", pass:"3",role:["admin"]}, {id:"p", pass:"4",role:["patient"]}];
 ///////////////////
 
 // This function is for when the user logs in, it will take them to the correct page
