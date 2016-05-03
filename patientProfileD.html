@@ -28,6 +28,11 @@
 
                 $("#nav_list").append(html_nav);
             };
+            
+            // When you click on the download button 
+            $( "#download" ).click(function() { 
+                // WILL HAVE TO PUT THE HOW TO TO DOWNLOAD ALL OFTHE INFORMATION 
+            });
 
                 $(".patient_id").html(current_user_patient_chosen.first_name + " " + current_user_patient_chosen.last_name);
                 $(".wattage").html(current_user_patient_chosen.wattage);
@@ -51,6 +56,11 @@
             <ul id="nav_list"> </ul>
         </div>
 
+        <div class="export_patient_stats" style="padding-top: 20px; text-align: center">
+            <button type="button" class="btn btn-warning" id="download" >Download Patient Stats</button>
+        </div>
+        
+        
         <div id="profile_div"></div>
 
                         <div class='col-sm-12 col-md-12 col-lg-12 toppad'>
