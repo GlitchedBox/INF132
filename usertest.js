@@ -2,23 +2,25 @@
  * Created by huyanh on 2016. 5. 10..
  */
 var MongoClient = require('mongodb').MongoClient
+var assert = require('assert');
+var ObjectId = require('mongodb').ObjectID;
+var url = 'mongodb://128.195.54.50/GroupBDB';
 
-MongoClient.connect("mongodb://128.195.54.50/", function (err, db) {
-    if (err) {
-        console.log("Connection failed via connection string")
-    } else {
-        console.log("successfully connected to the database")
-        // var adminDB = db.admin()
-        // adminDB.listDatabases(function(err, databases) {
-        //     console.log("asdfasdfasdf")
-        //     console.log(databases)
-        // })
-        var collection = db.collection('patient')
-        console.log("Array:", collection.find().toArray(function(err, docs) {
-            console.log(docs)
+var findRestaurants = function(db, callback) {
+    var cursor =db.collection('doctor').find( );
+    cursor.each(function(err, doc) {
+        assert.equal(err, null);
+        if (doc != null) {
+            console.dir(doc);
+        } else {
+            callback();
         }
-        ))
-    }
-    db.close()
-    console.log("connection closed")
-})
+    });
+};
+
+MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    findRestaurants(db, function() {
+        db.close();
+    });
+});
